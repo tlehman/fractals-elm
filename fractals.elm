@@ -23,3 +23,21 @@ render ln =
         svg [ width "500", height "500", viewBox "0 0 500 500", fill "#DCB35C" ]
             [line [x1 x1s, y1 y1s, x2 x2s, y2 y2s, strokeWidth "3", stroke "black"] []
         ]
+
+scalePoint : Point -> Float -> Point
+scalePoint pt factor =
+    let
+        (x,y) = (pt.x, pt.y)
+    in
+        Point (x * factor) (y * factor)
+
+scale : Line -> Float -> Line
+scale ln factor =
+    let
+        (a,b) = (ln.a, ln.b)
+    in
+        let
+            x = (scalePoint a factor)
+            y = (scalePoint b factor)
+        in
+            Line x y
