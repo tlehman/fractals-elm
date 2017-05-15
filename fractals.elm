@@ -9,7 +9,7 @@ main =
         b = (Point 1 0)
         init = (Line a b)
     in
-        render (flatMap cantorStep (flatMap cantorStep (cantorStep init)))
+        render (cantorStep init)
 
 type alias Point = { x: Float, y: Float }
 
