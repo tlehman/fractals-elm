@@ -1,0 +1,25 @@
+var _ccapndave$elm_flat_map$Maybe_FlatMap$flatMap5 = F6(
+	function (f, maybe1, maybe2, maybe3, maybe4, maybe5) {
+		return _elm_community$maybe_extra$Maybe_Extra$join(
+			A6(_elm_lang$core$Maybe$map5, f, maybe1, maybe2, maybe3, maybe4, maybe5));
+	});
+var _ccapndave$elm_flat_map$Maybe_FlatMap$flatMap4 = F5(
+	function (f, maybe1, maybe2, maybe3, maybe4) {
+		return _elm_community$maybe_extra$Maybe_Extra$join(
+			A5(_elm_lang$core$Maybe$map4, f, maybe1, maybe2, maybe3, maybe4));
+	});
+var _ccapndave$elm_flat_map$Maybe_FlatMap$flatMap3 = F4(
+	function (f, maybe1, maybe2, maybe3) {
+		return _elm_community$maybe_extra$Maybe_Extra$join(
+			A4(_elm_lang$core$Maybe$map3, f, maybe1, maybe2, maybe3));
+	});
+var _ccapndave$elm_flat_map$Maybe_FlatMap$flatMap2 = F3(
+	function (f, maybe1, maybe2) {
+		return _elm_community$maybe_extra$Maybe_Extra$join(
+			A3(_elm_lang$core$Maybe$map2, f, maybe1, maybe2));
+	});
+var _ccapndave$elm_flat_map$Maybe_FlatMap$flatMap = F2(
+	function (f, maybe) {
+		return _elm_community$maybe_extra$Maybe_Extra$join(
+			A2(_elm_lang$core$Maybe$map, f, maybe));
+	});

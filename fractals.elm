@@ -1,6 +1,7 @@
 import Html exposing (..)
 import Svg exposing (..)
 import Svg.Attributes exposing (..)
+import List.FlatMap exposing (..)
 
 main =
     let
@@ -8,7 +9,7 @@ main =
         b = (Point 1 0)
         init = (Line a b)
     in
-        render (cantorStep init)
+        render (flatMap cantorStep (flatMap cantorStep (cantorStep init)))
 
 type alias Point = { x: Float, y: Float }
 

@@ -1,0 +1,32 @@
+var _ccapndave$elm_flat_map$List_FlatMap$join = A2(
+	_elm_lang$core$List$foldr,
+	F2(
+		function (x, y) {
+			return A2(_elm_lang$core$Basics_ops['++'], x, y);
+		}),
+	{ctor: '[]'});
+var _ccapndave$elm_flat_map$List_FlatMap$flatMap = F2(
+	function (f, list) {
+		return _ccapndave$elm_flat_map$List_FlatMap$join(
+			A2(_elm_lang$core$List$map, f, list));
+	});
+var _ccapndave$elm_flat_map$List_FlatMap$flatMap2 = F3(
+	function (f, list1, list2) {
+		return _ccapndave$elm_flat_map$List_FlatMap$join(
+			A3(_elm_lang$core$List$map2, f, list1, list2));
+	});
+var _ccapndave$elm_flat_map$List_FlatMap$flatMap3 = F4(
+	function (f, list1, list2, list3) {
+		return _ccapndave$elm_flat_map$List_FlatMap$join(
+			A4(_elm_lang$core$List$map3, f, list1, list2, list3));
+	});
+var _ccapndave$elm_flat_map$List_FlatMap$flatMap4 = F5(
+	function (f, list1, list2, list3, list4) {
+		return _ccapndave$elm_flat_map$List_FlatMap$join(
+			A5(_elm_lang$core$List$map4, f, list1, list2, list3, list4));
+	});
+var _ccapndave$elm_flat_map$List_FlatMap$flatMap5 = F6(
+	function (f, list1, list2, list3, list4, list5) {
+		return _ccapndave$elm_flat_map$List_FlatMap$join(
+			A6(_elm_lang$core$List$map5, f, list1, list2, list3, list4, list5));
+	});
