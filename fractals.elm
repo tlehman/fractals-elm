@@ -48,32 +48,20 @@ renderLine ln =
 
 scalePoint : Point -> Float -> Point
 scalePoint pt factor =
-    let
-        (x,y) = (pt.x, pt.y)
-    in
-        Point (x * factor) (y * factor)
+    { pt | x = pt.x * factor, y = pt.y * factor }
 
 scale : Line -> Float -> Line
 scale ln factor =
-    let
-        (a,b) = (ln.a, ln.b)
-        x = (scalePoint a factor)
-        y = (scalePoint b factor)
-    in
-        Line x y
+    { ln | a = (scalePoint ln.a factor),
+           b = (scalePoint ln.b factor)}
 
 addp : Point -> Point -> Point
 addp p q =
-    let
-        (px, py) = (p.x, p.y)
-        (qx, qy) = (q.x, q.y)
-    in
-        Point (px+qx) (py+qy)
+    { p | x = p.x + q.x,
+          y = p.y + q.y }
 
 
 shift : Line -> Point -> Line
 shift ln p =
-    let
-        (a,b) = (ln.a, ln.b)
-    in
-        Line (addp a p) (addp b p)
+    { ln | a = addp ln.a p,
+           b = addp ln.b p }
