@@ -8151,6 +8151,24 @@ var _user$project$Main$shift = F2(
 			A2(_user$project$Main$addp, a, p),
 			A2(_user$project$Main$addp, b, p));
 	});
+var _user$project$Main$cantorStep = function (ln) {
+	var scaleFactor = 0.33333;
+	var shiftFactor = 2 * scaleFactor;
+	var left = A2(_user$project$Main$scale, ln, scaleFactor);
+	var right = A2(
+		_user$project$Main$shift,
+		left,
+		A2(_user$project$Main$Point, shiftFactor, 0));
+	return {
+		ctor: '::',
+		_0: left,
+		_1: {
+			ctor: '::',
+			_0: right,
+			_1: {ctor: '[]'}
+		}
+	};
+};
 var _user$project$Main$transform = function (ln) {
 	return A2(
 		_user$project$Main$shift,
@@ -8219,20 +8237,11 @@ var _user$project$Main$render = function (lns) {
 };
 var _user$project$Main$main = _elm_lang$virtual_dom$Native_VirtualDom.staticProgram(
 	function () {
-		var d = A2(_user$project$Main$Point, 1, 0);
-		var c = A2(_user$project$Main$Point, 0.6666, 0);
-		var b = A2(_user$project$Main$Point, 0.3333, 0);
+		var b = A2(_user$project$Main$Point, 1, 0);
 		var a = A2(_user$project$Main$Point, 0, 0);
+		var init = A2(_user$project$Main$Line, a, b);
 		return _user$project$Main$render(
-			{
-				ctor: '::',
-				_0: A2(_user$project$Main$Line, a, b),
-				_1: {
-					ctor: '::',
-					_0: A2(_user$project$Main$Line, c, d),
-					_1: {ctor: '[]'}
-				}
-			});
+			_user$project$Main$cantorStep(init));
 	}());
 var Elm = {};
 Elm['Main'] = Elm['Main'] || {};

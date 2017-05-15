@@ -5,15 +5,25 @@ import Svg.Attributes exposing (..)
 main =
     let
         a = (Point 0 0)
-        b = (Point 0.3333 0)
-        c = (Point 0.6666 0)
-        d = (Point 1 0)
+        b = (Point 1 0)
+        init = (Line a b)
     in
-        render [ (Line a b), (Line c d) ]
+        render (cantorStep init)
 
 type alias Point = { x: Float, y: Float }
 
 type alias Line = { a: Point, b: Point}
+
+-- the Cantor dust is a 0.63-dimensional fractal, it is is compact, totally disconnected and has Lebesgue measure 0
+cantorStep : Line -> List Line
+cantorStep ln =
+    let
+        scaleFactor = 0.33333
+        shiftFactor = 2 * scaleFactor
+        left = (scale ln scaleFactor)
+        right = (shift left (Point shiftFactor 0))
+    in
+        [left, right]
 
 transform : Line -> Line
 transform ln = (shift (scale ln 440) (Point 50 50))
