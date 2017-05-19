@@ -2,21 +2,37 @@ import Html exposing (..)
 import Svg exposing (..)
 import Svg.Attributes exposing (..)
 import List.FlatMap exposing (..)
+import Time exposing (Time, second)
 
-main =
-    let
-        a = (Point 0 0)
-        b = (Point 1 0)
-        init = (Line a b)
-    in
-        render (cantorStep init)
+-- The model is a list of lines. This works for our fractals of topological dimension at most 1
+type alias Model = List Line
+
+init : (Model, Cmd Msg)
+init = let
+         a = (Point 0 0)
+         b = (Point 1 0)
+         interval = (Line a b)
+       in
+         ((cantorStep interval), Cmd.none)
+
+update : Msg -> Model -> (Model, Cmd Msg)
+update msg model =
+    case msg of
+        Tick newTime ->
+            (flatMap cantorStep model, Cmd.none)
+
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    Time.every second Tick
 
 type alias Point = { x: Float, y: Float }
 
 type alias Line = { a: Point, b: Point}
 
+type Msg = Tick Time
+
 -- the Cantor dust is a 0.63-dimensional fractal, it is is compact, totally disconnected and has Lebesgue measure 0
-cantorStep : Line -> List Line
+cantorStep : Line -> Model
 cantorStep ln =
     let
         scaleFactor = 0.33333
@@ -29,10 +45,10 @@ cantorStep ln =
 transform : Line -> Line
 transform ln = (shift (scale ln 440) (Point 50 50))
 
-render : List Line -> Html msg
-render lns =
+view : Model -> Html msg
+view model =
     svg [ width "500", height "500", viewBox "0 0 500 500", fill "#DCB35C" ]
-      (List.map renderLine lns)
+      (List.map renderLine model)
 
 renderLine : Line -> Html msg
 renderLine ln =
@@ -65,3 +81,12 @@ shift : Line -> Point -> Line
 shift ln p =
     { ln | a = addp ln.a p,
            b = addp ln.b p }
+
+main =
+    program
+    {
+        init = init
+      , view = view
+      , update = update
+      , subscriptions = subscriptions
+    }
