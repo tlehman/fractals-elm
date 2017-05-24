@@ -1,0 +1,22 @@
+
+fractals.elm,589
+type alias Model =type8,254
+type alias ModelModel8,254
+init =init11,308
+update msg model =update19,496
+subscriptions model =subscriptions25,638
+type alias Point =type28,688
+type alias PointPoint28,688
+type alias Line =type30,731
+type alias LineLine30,731
+type Msg =type32,772
+type MsgMsg32,772
+cantorStep ln =cantorStep36,937
+transform ln =transform46,1173
+view model =view49,1251
+renderLine ln =renderLine54,1406
+scalePoint pt factor =scalePoint66,1737
+scale ln factor =scale70,1841
+addp p q =addp75,1973
+shift ln p =shift81,2067
+main =main85,2138
